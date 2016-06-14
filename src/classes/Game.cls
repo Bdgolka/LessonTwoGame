@@ -13,6 +13,10 @@ public with sharing class Game {
     //The method provides the hero power by choosing random number within max and min hero's possible damage
     private static integer Damage (Unit unit){
         
+        //If unit.dmg_Min or unit.dmg_Max is not possitive number return error;
+        /*if (unit.dmg_Max< 0 || unit.dmg_Min < 0 )
+            return - 1;*/
+        
         return (integer)(Math.floor(Math.random() * (unit.dmg_Max - unit.dmg_Min + 1) + unit.dmg_Min));
 
     }
@@ -27,17 +31,24 @@ public with sharing class Game {
             unit2.HP -= Damage(unit1);
         }
         
-        if (unit1.HP > unit2.HP)
+        if (unit1.HP > 0)
         	return unit1;
         
-        else 
+        else if (unit2.HP > 0)
             return unit2;
+        
+        else
+            return null; 
+            
     } 
     
-    public static void theWinnerIs(Unit unit1, Unit unit2){
+    public static string theWinnerIs(Unit unit1, Unit unit2){
+                
         Unit winner = Fight (unit1, unit2);
-        System.debug('The Winner is ' + winner.name 
-                    + '\n Remained hero\'s life is ' + winner.HP);
+        if(winner == null)
+             return 'There is no winner  - DRAW';
+        else
+       return 'The Winner is ' + winner.name + '\n Remained hero\'s life is ' + winner.HP;
     }
  
 }

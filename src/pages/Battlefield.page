@@ -1,0 +1,24 @@
+<apex:page controller="GameController">
+    <apex:form >
+        <apex:pageBlock >
+            <h1>Input information about Personage #1 </h1><br/>
+            Name <apex:inputText value="{!name_1}"/><br/>
+            Life<apex:inputText value="{!HP_1}"/><br/>
+            Min Damage <apex:inputText value="{!dmg_Min_1}"/><br/>
+            Max Damage<apex:inputText value="{!dmg_Max_1}"/><br/>
+        </apex:pageBlock>
+          <apex:pageBlock >
+            <h1>Input information about Personage #2 </h1><br/>
+            Name <apex:inputText value="{!name_2}"/><br/>
+            Life<apex:inputText value="{!HP_2}"/><br/>
+            Min Damage <apex:inputText value="{!dmg_Min_2}"/><br/>
+            Max Damage<apex:inputText value="{!dmg_Max_2}"/><br/>
+        </apex:pageBlock>        
+        <apex:pageBlock >
+            <apex:commandButton action="{!determineTheWinner}" value="Determine The Winner" />
+        </apex:pageBlock>  
+    <apex:pageBlock id="RefreshField">
+        <apex:outputText value="{!Message}"/>
+        </apex:pageBlock>
+    </apex:form>
+</apex:page>
